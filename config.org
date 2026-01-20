@@ -1,9 +1,11 @@
-#+title: Doom-config
+#+title: doom-config
 #+PROPERTY: header-args :tangle config.el
 
 * Overview
 My Doom Emacs configuration is currently quite simplistic, with small changes managed through config.org and longer or repetitive configuration separated into the elisp/ directory for clarity and organization.
+
 I use Org-roam to implement the Zettelkasten method, helping me learn efficiently and keep my notes well-structured.
+
 This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur=. Setting it up would have been much harder without their excellent guides on writing accessible and effective Emacs configurations.
 
 #+BEGIN_SRC emacs-lisp :tangle yes
