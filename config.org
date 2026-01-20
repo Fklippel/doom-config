@@ -1,7 +1,7 @@
-#+title: Config
+#+title: Doom-config
 #+PROPERTY: header-args :tangle config.el
 
-* Config overview
+* Overview
 My Doom Emacs configuration is currently quite simplistic, with small changes managed through config.org and longer or repetitive configuration separated into the elisp/ directory for clarity and organization.
 I use Org-roam to implement the Zettelkasten method, helping me learn efficiently and keep my notes well-structured.
 This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur=. Setting it up would have been much harder without their excellent guides on writing accessible and effective Emacs configurations.
@@ -10,7 +10,7 @@ This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
 
-** frame settings
+** frame settings:
 #+BEGIN_SRC emacs-lisp :tangle yes
 (setq frame '((width . 203)
               (height . 60)
@@ -20,14 +20,14 @@ This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur
       default-frame-alist frame)
 #+end_src
 
-** org-roam
+** org-roam:
 #+BEGIN_SRC emacs-lisp :tangle yes
 (after! org-roam
   (setq! org-roam-directory (file-truename "~/org-roam")
          org-roam-capture-templates klippel/org-roam-templates)
 #+end_src
 
-** magit
+** magit:
 #+BEGIN_SRC emacs-lisp :tangle yes
 (set-popup-rule! "^\\*magit" :ignore t)
 #+end_src
