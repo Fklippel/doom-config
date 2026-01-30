@@ -14,7 +14,7 @@
       (org-roam-db-sync)))
 
   (advice-add 'org-roam-node-find :before
-              #'klippel/org-roam-syn))
+              #'klippel/org-roam-sync-on-demand))
 
 (provide 'klippel-performance)
 
