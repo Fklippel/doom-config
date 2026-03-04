@@ -8,12 +8,17 @@ I use Org-roam to implement the Zettelkasten method, helping me learn efficientl
 
 This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur=. Setting it up would have been much harder without their excellent guides on writing accessible and effective Emacs configurations.
 
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle "config.el"
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 #+end_src
 
+** theme:
+#+BEGIN_SRC emacs-lisp :tangle "config.el"
+(setq doom-theme 'doom-nord)
+#+end_src
+
 ** frame settings:
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle "config.el"
 (setq frame '((width . 203)
               (height . 60)
               (top . 20)
@@ -23,13 +28,32 @@ This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur
 #+end_src
 
 ** org-roam:
-#+BEGIN_SRC emacs-lisp :tangle yes
-(after! org-roam
-  (setq! org-roam-directory (file-truename "~/org-roam")
-         org-roam-capture-templates klippel/org-roam-templates)
+#+BEGIN_SRC emacs-lisp :tangle "config.el"
+(defvar klippel/org-roam-templates
+   '(("d" "default" plain
+          "%?"
+          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+          :unnarrowed t)
+
+         ("f" "French" plain
+          "%?"
+          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :large_topic:\n")
+          :unnarrowed t)
+
+         ("c" "C standard library" plain
+          "* Description:\n %? \n\n* Defining exemple:\n\n #+begin_src %^{Language}\n\n#+end_src"
+          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :standard_library:\n")
+          :unnarrowed t)
+
+         ("l" "LeetCode Exercise" plain
+          "* Micro-skills used:\n - %?\n\n* Language used:\n \n\n* Solution\n\n#+begin_src %^{Language}\n\n#+end_src\n\n* Reference:\n\n- \n- [[roam:LeetCode Exercise]]"
+          :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :leetCode_exercise:\n")
+          :unnarrowed t)))
+
+(setq org-roam-capture-templates klippel/org-roam-templates)
 #+end_src
 
 ** magit:
-#+BEGIN_SRC emacs-lisp :tangle yes
+#+BEGIN_SRC emacs-lisp :tangle "config.el"
 (set-popup-rule! "^\\*magit" :ignore t)
 #+end_src

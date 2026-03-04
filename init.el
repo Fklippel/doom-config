@@ -116,6 +116,7 @@
        ;;tty               ; improve the terminal Emacs experience
 
        :lang
+       org
        ;;ada               ; In strong typing we (blindly) trust
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
