@@ -90,6 +90,7 @@
 
        :tools
        lsp
+       (project +syntax)
        ;;ansible
        ;;biblio            ; Writes a PhD for you (citation needed)
        ;;collab            ; buffers with friends

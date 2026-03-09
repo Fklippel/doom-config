@@ -1,6 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-xcode)
 
 (setq frame '((width . 203)
               (height . 60)
@@ -33,3 +33,9 @@
 (setq org-roam-capture-templates klippel/org-roam-templates)
 
 (set-popup-rule! "^\\*magit" :ignore t)
+
+(after! projectile
+  (setq projectile-project-search-path '("~/Desktop/Projects"))
+  (map! :map projectile-mode-map
+        "s-p"   #'projectile-command-map
+        "C-c p" #'projectile-command-map))

@@ -14,7 +14,7 @@ This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur
 
 ** theme:
 #+BEGIN_SRC emacs-lisp :tangle "config.el"
-(setq doom-theme 'doom-nord)
+(setq doom-theme 'doom-xcode)
 #+end_src
 
 ** frame settings:
@@ -57,3 +57,14 @@ This configuration is heavily inspired by users like =sunnyhasija= and =tecosaur
 #+BEGIN_SRC emacs-lisp :tangle "config.el"
 (set-popup-rule! "^\\*magit" :ignore t)
 #+end_src
+
+** projectile:
+#+BEGIN_SRC emacs-lisp :tangle "config.el"
+(after! projectile
+  (setq projectile-project-search-path '("~/Desktop/Projects"))
+  (map! :map projectile-mode-map
+        "s-p"   #'projectile-command-map
+        "C-c p" #'projectile-command-map))
+
+#+end_src
+
