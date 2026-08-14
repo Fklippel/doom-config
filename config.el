@@ -2,12 +2,18 @@
 
 (setq doom-theme 'doom-xcode)
 
-(setq frame '((width . 203)
-              (height . 60)
-              (top . 20)
-              (left . 0)))
-(setq initial-frame-alist frame
-      default-frame-alist frame)
+(custom-set-faces!
+  '(default :background "#0d0d0d")
+  '(solaire-default-face :background "#0a0a0a"))
+
+(setq default-frame-alist
+      '((width . 203)
+        (height . 60)
+        (top . 20)
+        (left . 0)
+        (alpha-background . 85)))
+(setq initial-frame-alist default-frame-alist)
+(set-frame-parameter nil 'alpha-background 85)
 
 (defvar klippel/org-roam-templates
    '(("d" "default" plain
@@ -39,3 +45,18 @@
   (map! :map projectile-mode-map
         "s-p"   #'projectile-command-map
         "C-c p" #'projectile-command-map))
+
+(let ((secrets-file (expand-file-name "private.el" doom-private-dir)))
+  (when (file-exists-p secrets-file)
+    (load secrets-file)))
+
+;; (use-package docker
+;;   :ensure t
+;;   :bind ("C-c d" . docker))
+
+;; (add-to-list 'load-path "/Users/lauraklippel/dockerfile-mode")
+;; (require 'dockerfile-mode)
+
+;; (require 'docker-tramp-compat)
+
+;; (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
